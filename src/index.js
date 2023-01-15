@@ -10,9 +10,13 @@ import { menMainPage } from './modules/mainPage/manMainPage'
 import { renderFooter } from './modules/render/renderFooter'
 import { getData } from './modules/getData'
 import { API_URL, DATA } from './modules/const'
+import { createCssColors } from './modules/createCssColors'
 
 const init = async () => {
 	DATA.navigation = await getData(`${API_URL}/api/categories`)
+	DATA.colors = await getData(`${API_URL}/api/colors`)
+
+	createCssColors(DATA.colors)
 
 	router.on('*', () => {
 		renderHeader()
