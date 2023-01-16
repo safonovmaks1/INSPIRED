@@ -21,302 +21,254 @@ export const fbLink = createElement('a', {
 	href: '#',
 })
 
-const container = createElement('div', {
-	className: 'container',
-})
-
-const footerContainer = createElement(
-	'div',
-	{
-		className: 'footer__container',
-	},
-	{
-		parent: container,
-	}
-)
-
-const footerCategory = createElement(
-	'div',
-	{
-		className: 'footer__item footer__item_category footer-category',
-	},
-	{
-		parent: footerContainer,
-	}
-)
-
-createElement(
-	'h2',
-	{
-		className: 'footer__title footer-category__title',
-		textContent: 'Каталог',
-	},
-	{
-		parent: footerCategory,
-	}
-)
-
-// const categoryList = DATA.navigation[gender].list.map(item => {
-// 	createElement(
-// 		'li',
-// 		{
-// 			className: 'footer-category__item',
-// 		},
-// 		{
-// 			append: createElement(
-// 				'h3',
-// 				{
-// 					className: 'footer-category__subtitle',
-// 				},
-// 				{
-// 					append: createElement('a', {
-// 						className: 'footer__link',
-// 						textContent: item.title,
-// 						href: `#/${gender}/${item.slug}`,
-// 					}),
-// 				}
-// 			),
-// 		}
-// 	)
-// })
-
-createElement(
-	'ul',
-	{
-		className: 'footer-category__list',
-	},
-	{
-		parent: footerCategory,
-		// appends: categoryList,
-	}
-)
-
-const footerSocial = createElement(
-	'div',
-	{
-		className: 'footer__item footer__item_social footer-social',
-	},
-	{
-		parent: footerContainer,
-	}
-)
-
-createElement(
-	'h2',
-	{
-		className: 'footer__title footer-social__title',
-		textContent: 'Связаться с нами',
-	},
-	{
-		parent: footerSocial,
-	}
-)
-
-createElement(
-	'p',
-	{
-		className: 'footer-social__subtitle',
-		textContent: 'Контакты и адреса магазинов',
-	},
-	{
-		parent: footerSocial,
-	}
-)
-
-createElement(
-	'ul',
-	{
-		className: 'footer-social__list',
-	},
-	{
-		parent: footerSocial,
-		appends: [
-			createElement(
-				'li',
-				{
-					className: 'footer-social__item',
-				},
-				{
-					append: vkLink,
-				}
-			),
-			createElement(
-				'li',
-				{
-					className: 'footer-social__item',
-				},
-				{
-					append: fbLink,
-				}
-			),
-		],
-	}
-)
-
-const footerContacts = createElement(
-	'div',
-	{
-		className: 'footer__item footer__item_contacts footer-contacts',
-	},
-	{
-		parent: footerContainer,
-	}
-)
-
-createElement(
-	'a',
-	{
-		className: 'footer__link',
-		textContent: 'Inspired@gmail.com',
-		href: 'mailto:Inspired@gmail.com',
-	},
-	{
-		parent: footerContacts,
-	}
-)
-
-createElement(
-	'a',
-	{
-		className: 'footer__link',
-		textContent: '8 930 490 26 20',
-		href: 'tel:+79304902620',
-	},
-	{
-		parent: footerContacts,
-	}
-)
-
-const footerCopyright = createElement(
-	'div',
-	{
-		className: 'footer__item footer__item_copyright footer-copyright',
-	},
-	{
-		parent: footerContainer,
-	}
-)
-
-createElement(
-	'p',
-	{
-		textContent: '© INSPIRED, 2023',
-	},
-	{
-		parent: footerCopyright,
-	}
-)
-
-const footerDev = createElement(
-	'div',
-	{
-		className: 'footer__item footer__item_development footer-development',
-	},
-	{
-		parent: footerContainer,
-	}
-)
-
-createElement(
-	'ul',
-	{
-		className: 'footer-development__list',
-	},
-	{
-		parent: footerDev,
-		appends: [
-			createElement(
-				'li',
-				{
-					className: 'footer-development__item',
-					textContent: 'Designer:',
-				},
-				{
-					append: createElement('a', {
-						className: 'footer__link',
-						textContent: ' Anastasia Ilina',
-						href: `https://t.me/Mrshmallowww`,
-						target: '_blank',
-					}),
-				}
-			),
-			createElement(
-				'li',
-				{
-					className: 'footer-development__item',
-					textContent: `Developer:`,
-				},
-				{
-					append: createElement('a', {
-						className: 'footer__link',
-						textContent: ' Maksim Safonov',
-						href: `https://t.me/MaksSafonov`,
-						target: '_blank',
-					}),
-				}
-			),
-		],
-	}
-)
-
-export const renderFooter = () => {
+export const renderFooter = gender => {
 	const footer = document.querySelector('.footer')
 
-	footer.append(container)
+	footer.textContent = ''
 
-	//  <div class="container">
-	// 			<div class="footer__container">
-	// 				<div class="footer__item footer__item_category footer-category">
-	// 					<h2 class="footer__title footer-category__title">Каталог</h2>
+	const footerContainer = createElement(
+		'div',
+		{
+			className: 'container',
+		},
+		{
+			parent: footer,
+		}
+	)
 
-	// 					<ul class="footer-category__list">
-	// 						<li class="footer-category__item">
-	// 							<h3 class="footer-category__subtitle">
-	// 								<a href="#" class="footer__link">Женщины</a>
-	// 							</h3>
+	const footerWrapper = createElement(
+		'div',
+		{
+			className: 'footer__container',
+		},
+		{
+			parent: footerContainer,
+		}
+	)
 
-	// 							<ul class="footer-category__sublist">
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Бюстгальтеры</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Трусы</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Носки</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Халаты</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Термобелье</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Пижамы</a>
-	// 								</li>
-	// 							</ul>
-	// 						</li>
-	// 						<li class="footer-category__item">
-	// 							<h3 class="footer-category__subtitle">
-	// 								<a href="#" class="footer__link">Мужчины</a>
-	// 							</h3>
+	const footerCategory = createElement(
+		'div',
+		{
+			className: 'footer__item footer__item_category footer-category',
+		},
+		{
+			parent: footerWrapper,
+			append: createElement(
+				'h2',
+				{
+					className: 'footer__title footer-category__title',
+					textContent: 'Каталог',
+				},
+				{
+					parent: footerCategory,
+				}
+			),
+		}
+	)
 
-	// 							<ul class="footer-category__sublist">
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Трусы</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Носки</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Халаты</a>
-	// 								</li>
-	// 								<li class="footer-category__subitem">
-	// 									<a href="#" class="footer__link">Термобелье</a>
-	// 								</li>
-	// 							</ul>
-	// 						</li>
-	// 					</ul>
-	// 				</div>
-	// 				<!-- /.footer__item -->
+	const footerCategoryList = createElement(
+		'ul',
+		{
+			className: 'footer-category__list',
+		},
+		{
+			parent: footerCategory,
+		}
+	)
+
+	for (const genderName in DATA.navigation) {
+		createElement(
+			'a',
+			{
+				className: 'footer__link',
+				href: `#/${genderName}`,
+				textContent: DATA.navigation[genderName].title,
+			},
+			{
+				parent: createElement(
+					'h3',
+					{
+						className: 'footer-category__subtitle',
+					},
+					{
+						parent: createElement(
+							'li',
+							{
+								className: 'footer-category__item',
+							},
+							{
+								parent: footerCategoryList,
+							}
+						),
+					}
+				),
+			}
+		)
+	}
+
+	//
+	const footerSocial = createElement(
+		'div',
+		{
+			className: 'footer__item footer__item_social footer-social',
+		},
+		{
+			parent: footerWrapper,
+			appends: [
+				createElement(
+					'h2',
+					{
+						className: 'footer__title footer-social__title',
+						textContent: 'Связаться с нами',
+					},
+					{
+						parent: footerSocial,
+					}
+				),
+				createElement(
+					'p',
+					{
+						className: 'footer-social__subtitle',
+						textContent: 'Контакты и адреса магазинов',
+					},
+					{
+						parent: footerSocial,
+					}
+				),
+				createElement(
+					'ul',
+					{
+						className: 'footer-social__list',
+					},
+					{
+						parent: footerSocial,
+						appends: [
+							createElement(
+								'li',
+								{
+									className: 'footer-social__item',
+								},
+								{
+									append: vkLink,
+								}
+							),
+							createElement(
+								'li',
+								{
+									className: 'footer-social__item',
+								},
+								{
+									append: fbLink,
+								}
+							),
+						],
+					}
+				),
+			],
+		}
+	)
+
+	const footerContacts = createElement(
+		'div',
+		{
+			className: 'footer__item footer__item_contacts footer-contacts',
+		},
+		{
+			parent: footerWrapper,
+			appends: [
+				createElement(
+					'a',
+					{
+						className: 'footer__link',
+						textContent: 'Inspired@gmail.com',
+						href: 'mailto:Inspired@gmail.com',
+					},
+					{
+						parent: footerContacts,
+					}
+				),
+				createElement(
+					'a',
+					{
+						className: 'footer__link',
+						textContent: '8 930 490 26 20',
+						href: 'tel:+79304902620',
+					},
+					{
+						parent: footerContacts,
+					}
+				),
+			],
+		}
+	)
+
+	const footerCopyright = createElement(
+		'div',
+		{
+			className: 'footer__item footer__item_copyright footer-copyright',
+		},
+		{
+			parent: footerWrapper,
+			append: createElement(
+				'p',
+				{
+					textContent: '© INSPIRED, 2023',
+				},
+				{
+					parent: footerCopyright,
+				}
+			),
+		}
+	)
+
+	const footerDev = createElement(
+		'div',
+		{
+			className: 'footer__item footer__item_development footer-development',
+		},
+		{
+			parent: footerWrapper,
+			append: createElement(
+				'ul',
+				{
+					className: 'footer-development__list',
+				},
+				{
+					parent: footerDev,
+					appends: [
+						createElement(
+							'li',
+							{
+								className: 'footer-development__item',
+								textContent: 'Designer:',
+							},
+							{
+								append: createElement('a', {
+									className: 'footer__link',
+									textContent: ' Anastasia Ilina',
+									href: `https://t.me/Mrshmallowww`,
+									target: '_blank',
+								}),
+							}
+						),
+						createElement(
+							'li',
+							{
+								className: 'footer-development__item',
+								textContent: `Developer:`,
+							},
+							{
+								append: createElement('a', {
+									className: 'footer__link',
+									textContent: ' Maksim Safonov',
+									href: `https://t.me/MaksSafonov`,
+									target: '_blank',
+								}),
+							}
+						),
+					],
+				}
+			),
+		}
+	)
 }

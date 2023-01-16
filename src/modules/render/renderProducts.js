@@ -88,15 +88,3 @@ export const renderProducts = async (title, params) => {
 		}
 	)
 }
-
-// <ul class="product__color-list">
-// 	<li class="product__color-item">
-// 		<div class="color color_red color_check"></div>
-// 	</li>
-// 	<li class="product__color-item">
-// 		<div class="color color_white"></div>
-// 	</li>
-// 	<li class="product__color-item">
-// 		<div class="color color_black"></div>
-// 	</li>
-// </ul>
