@@ -78,35 +78,50 @@ export const renderFooter = gender => {
 
 	for (const genderName in DATA.navigation) {
 		createElement(
-			'a',
+			'li',
+			{ className: 'footer-category__item' },
 			{
-				className: 'footer__link',
-				href: `#/${genderName}`,
-				textContent: DATA.navigation[genderName].title,
-			},
-			{
-				parent: createElement(
-					'h3',
-					{
-						className: 'footer-category__subtitle',
-					},
-					{
-						parent: createElement(
-							'li',
-							{
-								className: 'footer-category__item',
-							},
-							{
-								parent: footerCategoryList,
-							}
-						),
-					}
-				),
+				parent: footerCategoryList,
+				appends: [
+					createElement(
+						'h3',
+						{ className: 'footer-category__subtitle' },
+						{
+							append: createElement('a', {
+								className: 'footer__link',
+								href: `#/${genderName}`,
+								textContent: DATA.navigation[genderName].title,
+							}),
+						}
+					),
+					createElement(
+						'ul',
+						{
+							className: 'footer-category__sublist',
+						},
+						{
+							appends: DATA.navigation[genderName].list.map(item =>
+								createElement(
+									'li',
+									{
+										className: 'footer-category__subitem',
+									},
+									{
+										append: createElement('a', {
+											className: 'footer__link',
+											textContent: item.title,
+											href: `#/${gender}/${item.slug}`,
+										}),
+									}
+								)
+							),
+						}
+					),
+				],
 			}
 		)
 	}
 
-	//
 	const footerSocial = createElement(
 		'div',
 		{
