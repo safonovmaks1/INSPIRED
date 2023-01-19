@@ -1,0 +1,60 @@
+.pagination {
+	margin-top: 48px;
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	&__list {
+		padding: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		order: 2;
+	}
+	&__item {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+	}
+	&__link {
+		position: relative;
+		color: $gray;
+		&_active {
+			color: $main-color;
+		}
+
+		&_active:after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+			width: 16px;
+			height: 2px;
+			background-color: #000;
+		}
+	}
+
+	&__arrow {
+		padding: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $main-color;
+
+		&_start {
+			order: 1;
+		}
+		&_end {
+			order: 3;
+		}
+		&_disabled {
+			color: $gray;
+		}
+	}
+
+	&__icon {
+		width: 8px;
+	}
+}
