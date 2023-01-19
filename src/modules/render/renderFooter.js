@@ -1,5 +1,5 @@
-import { DATA } from '../const'
-import { createElement } from '../createElement'
+import { DATA, footer } from '../const'
+import { createElement } from '../utils/createElement'
 
 export const vkLink = createElement('a', {
 	className: 'footer-social__link footer-social__link_vk footer__link',
@@ -22,8 +22,6 @@ export const fbLink = createElement('a', {
 })
 
 export const renderFooter = gender => {
-	const footer = document.querySelector('.footer')
-
 	footer.textContent = ''
 
 	const footerContainer = createElement(
