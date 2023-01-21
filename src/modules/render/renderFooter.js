@@ -74,48 +74,67 @@ export const renderFooter = gender => {
 		}
 	)
 
-	for (const genderName in DATA.navigation) {
-		createElement(
+	for (const key in DATA.navigation) {
+		const footerCategoryItem = createElement(
 			'li',
-			{ className: 'footer-category__item' },
+			{
+				className: 'footer-category__item',
+			},
 			{
 				parent: footerCategoryList,
-				appends: [
-					createElement(
-						'h3',
-						{ className: 'footer-category__subtitle' },
-						{
-							append: createElement('a', {
+				append: createElement(
+					'h3',
+					{
+						className: 'footer-category__subtitle',
+					},
+					{
+						append: createElement(
+							'a',
+							{
 								className: 'footer__link',
-								href: `#/${genderName}`,
-								textContent: DATA.navigation[genderName].title,
-							}),
-						}
-					),
+								href: `#/${key}`,
+								textContent: DATA.navigation[key].title,
+							},
+							{
+								// cb(el) {
+								// 	el.addEventListener('click', e => {
+								// 		e.preventDefault()
+								// 		router.navigate(key)
+								// 	})
+								// },
+							}
+						),
+					}
+				),
+			}
+		)
+
+		createElement(
+			'ul',
+			{
+				className: 'footer-category__sublist',
+			},
+			{
+				parent: footerCategoryItem,
+				appends: DATA.navigation[key].list.map(item =>
 					createElement(
-						'ul',
+						'li',
 						{
-							className: 'footer-category__sublist',
+							className: 'footer-category__subitem',
 						},
 						{
-							appends: DATA.navigation[genderName].list.map(item =>
-								createElement(
-									'li',
-									{
-										className: 'footer-category__subitem',
-									},
-									{
-										append: createElement('a', {
-											className: 'footer__link',
-											textContent: item.title,
-											href: `#/${gender}/${item.slug}`,
-										}),
-									}
-								)
+							append: createElement(
+								'a',
+								{
+									className: 'footer__link',
+									href: `#/${key}/${item.slug}`,
+									textContent: item.title,
+								},
+								{}
 							),
 						}
-					),
-				],
+					)
+				),
 			}
 		)
 	}

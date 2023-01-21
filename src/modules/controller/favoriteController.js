@@ -18,6 +18,7 @@ const removeFavorite = id => {
 	if (index === -1) return
 
 	favoriteList.splice(index, 1)
+
 	localStorage.setItem('favorite', JSON.stringify(favoriteList))
 }
 
