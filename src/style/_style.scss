@@ -55,9 +55,21 @@ fieldset {
 	margin: 0;
 }
 
+fieldset {
+	// add
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
 .visually-hidden {
 	position: fixed;
 	transform: scale(0);
+}
+
+.input-hide {
+	// add
+	appearance: none;
 }
 
 .container {

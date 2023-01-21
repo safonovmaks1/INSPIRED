@@ -3,6 +3,7 @@
 	height: 18px;
 	border-radius: 50%;
 	position: relative;
+	display: block; // new
 
 	&_check {
 		border: 0.4px solid #929292;
