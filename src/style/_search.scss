@@ -28,7 +28,6 @@
 		border: 1px solid $gray;
 		font-weight: 400;
 		font-size: 14px;
-		line-height: 17px;
 
 		padding: 0 24px;
 
@@ -57,7 +56,6 @@
 
 		@include tablet {
 			font-size: 10px;
-			line-height: 12px;
 			padding: 0 16px;
 		}
 	}
@@ -69,14 +67,12 @@
 		color: $second-color;
 		font-weight: 700;
 		font-size: 14px;
-		line-height: 17px;
 		text-transform: uppercase;
 
 		@include tablet {
 			flex-basis: 124px;
 			height: 36px;
 			font-size: 10px;
-			line-height: 12px;
 		}
 
 		@include mobile {

@@ -77,7 +77,7 @@ export const renderProducts = async (title, params) => {
 					<p class="product__price">руб ${product.price}</p>
 					<button 
 						class="product__btn-favorite favorite 
-							${favoriteList.includes(product.id)} ? 'favorite_active' : ''" 
+						${favoriteList.includes(product.id) ? 'favorite_active' : ''} "
 						aria-label="Добавить в избранное" 
 						data-id=${product.id}
 					></button>

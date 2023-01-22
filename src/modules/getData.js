@@ -16,7 +16,7 @@ export const getData = async (urlApi, param, cbError = () => {}) => {
 
 		return data
 	} catch (error) {
-		console.warn(error)
+		// console.warn(error)
 		if (typeof param === 'function') {
 			param(error)
 		} else {

@@ -60,21 +60,19 @@
 	&__title {
 		font-weight: 400;
 		font-size: 18px;
-		line-height: 22px;
 		text-transform: uppercase;
 
 		@include tablet {
 			font-size: 16px;
-			line-height: 19px;
 		}
 
 		@include mobile {
 			font-size: 14px;
-			line-height: 17px;
 		}
 	}
 
 	&__link {
+		white-space: nowrap;
 		transition: color 0.3s ease;
 		&:hover {
 			color: $gray;

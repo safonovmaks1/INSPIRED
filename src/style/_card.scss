@@ -1,6 +1,5 @@
 .card {
 	margin-bottom: 100px;
-	display: none;
 
 	&__container {
 		display: flex;
@@ -52,13 +51,11 @@
 	&__title {
 		font-weight: 400;
 		font-size: 18px;
-		line-height: 22px;
 		text-transform: uppercase;
 		margin-bottom: 16px;
 
 		@include tablet {
 			font-size: 14px;
-			line-height: 17px;
 			margin-bottom: 12px;
 		}
 
@@ -69,13 +66,11 @@
 
 	&__price {
 		font-size: 18px;
-		line-height: 22px;
 		text-transform: uppercase;
 		margin-bottom: 40px;
 
 		@include tablet {
 			font-size: 14px;
-			line-height: 17px;
 			margin-bottom: 16px;
 		}
 	}
@@ -83,7 +78,6 @@
 	&__subtitle {
 		font-weight: 400;
 		font-size: 12px;
-		line-height: 15px;
 		color: $gray;
 
 		@include tablet {
@@ -94,13 +88,11 @@
 
 	&__vendor-code {
 		font-size: 12px;
-		line-height: 15px;
 		color: #000000;
 		margin-bottom: 24px;
 
 		@include tablet {
 			font-size: 10px;
-			line-height: 12px;
 			margin-bottom: 16px;
 		}
 	}
@@ -123,6 +115,7 @@
 
 	&__color-list {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 6px;
 	}
 
@@ -155,9 +148,9 @@
 
 	&__size-list {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 4px;
 		font-size: 14px;
-		line-height: 17px;
 		text-transform: uppercase;
 	}
 
@@ -188,7 +181,6 @@
 
 	&__description-text {
 		font-size: 16px;
-		line-height: 1.4;
 
 		@include tablet {
 			font-size: 12px;

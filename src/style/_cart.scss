@@ -1,5 +1,6 @@
 .cart {
 	margin-bottom: 90px;
+	display: none;
 
 	@include tablet {
 		margin-bottom: 60px;
@@ -12,7 +13,6 @@
 	&__title {
 		font-weight: 400;
 		font-size: 32px;
-		line-height: 39px;
 		text-align: center;
 		text-transform: uppercase;
 		padding-bottom: 24px;
@@ -20,13 +20,11 @@
 
 		@include tablet {
 			font-size: 24px;
-			line-height: 29px;
 			padding-bottom: 15px;
 		}
 
 		@include mobile {
 			font-size: 18px;
-			line-height: 22px;
 			padding-bottom: 9px;
 		}
 	}
@@ -55,7 +53,6 @@
 		justify-content: space-between;
 		font-weight: 400;
 		font-size: 14px;
-		line-height: 17px;
 		text-transform: uppercase;
 
 		@include tablet {
@@ -64,7 +61,6 @@
 
 		@include mobile {
 			font-size: 12px;
-			line-height: 15px;
 		}
 	}
 }

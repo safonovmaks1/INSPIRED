@@ -11,7 +11,6 @@
 		text-align: center;
 
 		font-size: 18px;
-		line-height: 22px;
 
 		text-transform: uppercase;
 		border-bottom: 1px solid $light-gray;
@@ -19,12 +18,10 @@
 
 		@include tablet {
 			font-size: 16px;
-			line-height: 19px;
 		}
 
 		@include mobile {
 			font-size: 14px;
-			line-height: 17px;
 		}
 
 		&:hover {

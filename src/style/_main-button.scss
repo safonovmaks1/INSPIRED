@@ -3,7 +3,6 @@
 	color: $second-color;
 	font-weight: 700;
 	font-size: 14px;
-	line-height: 17px;
 	text-transform: uppercase;
 	white-space: nowrap;
 	border: none;
@@ -12,6 +11,5 @@
 	@include tablet {
 		padding: 12px 41px;
 		font-size: 10px;
-		line-height: 12px;
 	}
 }

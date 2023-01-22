@@ -5,8 +5,12 @@
 	position: relative;
 	display: block; // new
 
+	// &:has(:checked) {
+	// 	border: 0.4px solid $gray;
+	// }
+
 	&_check {
-		border: 0.4px solid #929292;
+		border: 0.4px solid $gray;
 	}
 
 	&:after {
@@ -17,6 +21,14 @@
 		transform: translate(-50%, -50%);
 		width: 12px;
 		height: 12px;
+		border-radius: 50%;
+	}
+
+	&__input:checked + &__check {
+		position: absolute;
+		inset: 0;
+		display: block;
+		border: 0.4px solid $gray;
 		border-radius: 50%;
 	}
 }
