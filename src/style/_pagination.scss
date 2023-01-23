@@ -11,12 +11,11 @@
 		gap: 16px;
 		order: 2;
 	}
-	&__item {
-		font-weight: 400;
-		font-size: 14px;
-	}
+
 	&__link {
 		position: relative;
+		font-weight: 400;
+		font-size: 14px;
 		color: $gray;
 		&_active {
 			color: $main-color;
