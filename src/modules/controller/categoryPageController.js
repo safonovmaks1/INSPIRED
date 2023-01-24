@@ -1,10 +1,10 @@
-import { DATA } from "../const";
-import { renderCard } from "../render/renderCard";
-import { renderCart } from "../render/renderCart";
-import { renderHero } from "../render/renderHero";
-import { renderNavigation } from "../render/renderNavigation";
-import { renderOrder } from "../render/renderOrder";
-import { renderProducts } from "../render/renderProducts";
+import { DATA } from '../const';
+import { renderCard } from '../render/renderCard';
+import { renderCart } from '../render/renderCart';
+import { renderHero } from '../render/renderHero';
+import { renderNavigation } from '../render/renderNavigation';
+import { renderOrder } from '../render/renderOrder';
+import { renderProducts } from '../render/renderProducts';
 
 export const categoryPageController = (routerData) => {
 	const { gender, category } = routerData.data;

@@ -1,4 +1,4 @@
-import { router } from "./router";
+import { router } from './router';
 
 export const getUrl = (params) => {
 	const currentLocation = router.getCurrentLocation();

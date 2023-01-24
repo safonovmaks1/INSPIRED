@@ -1,11 +1,11 @@
-import { API_URL, COUNT_PAGINATION, DATA, products } from "../const";
-import { getFavorite } from "../controller/favoriteController";
-import { getData } from "../getData";
-import { createElement } from "../utils/createElement";
-import { renderPagination } from "./renderPagination";
+import { API_URL, COUNT_PAGINATION, DATA, products } from '../const';
+import { getFavorite } from '../controller/favoriteController';
+import { getData } from '../getData';
+import { createElement } from '../utils/createElement';
+import { renderPagination } from './renderPagination';
 
 export const renderProducts = async ({ title, params, render }) => {
-	products.textContent = "";
+	products.textContent = '';
 
 	if (!render) {
 		return;
@@ -16,17 +16,17 @@ export const renderProducts = async ({ title, params, render }) => {
 	const goods = Array.isArray(data) ? data : data.goods;
 
 	const container = createElement(
-		"div",
+		'div',
 		{
-			className: "container",
+			className: 'container',
 		},
 		{ parent: products }
 	);
 
 	const titleElem = createElement(
-		"h2",
+		'h2',
 		{
-			className: "goods__title",
+			className: 'goods__title',
 			textContent: title,
 		},
 		{
@@ -34,11 +34,11 @@ export const renderProducts = async ({ title, params, render }) => {
 		}
 	);
 
-	if (Object.hasOwn(data, "totalCount")) {
+	if (Object.hasOwn(data, 'totalCount')) {
 		createElement(
-			"sup",
+			'sup',
 			{
-				className: "goods__title_sup",
+				className: 'goods__title_sup',
 				innerHTML: `&nbsp(${data?.totalCount})`,
 			},
 			{
@@ -48,9 +48,9 @@ export const renderProducts = async ({ title, params, render }) => {
 
 		if (!data.totalCount) {
 			createElement(
-				"p",
+				'p',
 				{
-					className: "goods__warning",
+					className: 'goods__warning',
 					textContent: `По вашему запросу ничего не найдено...`,
 				},
 				{ parent: container }
@@ -63,14 +63,14 @@ export const renderProducts = async ({ title, params, render }) => {
 	const favoriteList = getFavorite();
 
 	const listCard = goods.map((product) => {
-		const li = createElement("li", {
-			className: "goods__item",
+		const li = createElement('li', {
+			className: 'goods__item',
 		});
 
 		const article = createElement(
-			"article",
+			'article',
 			{
-				className: "product",
+				className: 'product',
 				innerHTML: `
 				<a href="#/product/${product.id}" class="product__link">
 					<img src="${API_URL}/${product.pic}" alt="${
@@ -83,7 +83,7 @@ export const renderProducts = async ({ title, params, render }) => {
 					<p class="product__price">руб ${product.price}</p>
 					<button
 						class="product__btn-favorite favorite
-						${favoriteList.includes(product.id) ? "favorite_active" : ""} "
+						${favoriteList.includes(product.id) ? 'favorite_active' : ''} "
 						aria-label="Добавить в избранное"
 						data-id=${product.id}
 					></button>
@@ -96,17 +96,17 @@ export const renderProducts = async ({ title, params, render }) => {
 		);
 
 		createElement(
-			"ul",
+			'ul',
 			{
-				className: "product__color-list",
+				className: 'product__color-list',
 			},
 			{
 				parent: article,
 				appends: product.colors.map((colorId, i) => {
 					const color = DATA.colors.find((item) => item.id == colorId);
 
-					return createElement("li", {
-						className: `color color_${color.title} ${i ? "" : "color_check"}`,
+					return createElement('li', {
+						className: `color color_${color.title} ${i ? '' : 'color_check'}`,
 					});
 				}),
 			}
@@ -116,9 +116,9 @@ export const renderProducts = async ({ title, params, render }) => {
 	});
 
 	createElement(
-		"ul",
+		'ul',
 		{
-			className: "goods__list",
+			className: 'goods__list',
 		},
 		{
 			appends: listCard,
@@ -128,9 +128,9 @@ export const renderProducts = async ({ title, params, render }) => {
 
 	if (data.pages && data.pages > 1) {
 		const pagination = createElement(
-			"div",
+			'div',
 			{
-				className: "goods__pagination pagination",
+				className: 'goods__pagination pagination',
 			},
 			{ parent: container }
 		);

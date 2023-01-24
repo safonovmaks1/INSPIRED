@@ -21,7 +21,7 @@ export const createElement = (
 		parent.append(element);
 	}
 
-	if (cb && typeof cb === "function") {
+	if (cb && typeof cb === 'function') {
 		cb(element);
 	}
 

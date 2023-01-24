@@ -1,13 +1,13 @@
-import { renderCard } from "../render/renderCard";
-import { renderCart } from "../render/renderCart";
-import { renderHero } from "../render/renderHero";
-import { renderNavigation } from "../render/renderNavigation";
-import { renderOrder } from "../render/renderOrder";
-import { renderProducts } from "../render/renderProducts";
-import { router } from "../utils/router";
+import { renderCard } from '../render/renderCard';
+import { renderCart } from '../render/renderCart';
+import { renderHero } from '../render/renderHero';
+import { renderNavigation } from '../render/renderNavigation';
+import { renderOrder } from '../render/renderOrder';
+import { renderProducts } from '../render/renderProducts';
+import { router } from '../utils/router';
 
 export const searchConroller = (formSearch) => {
-	formSearch.addEventListener("submit", (e) => {
+	formSearch.addEventListener('submit', (e) => {
 		e.preventDefault();
 
 		router.navigate(`search?value=${formSearch.search.value}`);

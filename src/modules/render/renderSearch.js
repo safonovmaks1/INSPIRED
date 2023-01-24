@@ -1,23 +1,23 @@
-import { searchConroller } from "../controller/searchController";
-import { createElement } from "../utils/createElement";
+import { searchConroller } from '../controller/searchController';
+import { createElement } from '../utils/createElement';
 
-export const search = createElement("div", {
-	className: "search",
+export const search = createElement('div', {
+	className: 'search',
 });
 
 export const searchToggle = () => {
-	if (search.classList.contains("search_show")) {
-		search.classList.remove("search_show");
+	if (search.classList.contains('search_show')) {
+		search.classList.remove('search_show');
 		form.reset();
 	} else {
-		search.classList.add("search_show");
+		search.classList.add('search_show');
 	}
 };
 
 const container = createElement(
-	"div",
+	'div',
 	{
-		className: "container",
+		className: 'container',
 	},
 	{
 		parent: search,
@@ -25,9 +25,9 @@ const container = createElement(
 );
 
 const form = createElement(
-	"form",
+	'form',
 	{
-		className: "search__form",
+		className: 'search__form',
 	},
 	{
 		parent: container,
@@ -36,22 +36,22 @@ const form = createElement(
 );
 
 createElement(
-	"input",
+	'input',
 	{
-		className: "search__input",
-		type: "search",
-		name: "search",
-		placeholder: "Найти...",
+		className: 'search__input',
+		type: 'search',
+		name: 'search',
+		placeholder: 'Найти...',
 	},
 	{ parent: form }
 );
 
 createElement(
-	"button",
+	'button',
 	{
-		className: "search__btn",
-		type: "submit",
-		textContent: "Искать",
+		className: 'search__btn',
+		type: 'submit',
+		textContent: 'Искать',
 	},
 	{
 		parent: form,

@@ -1,15 +1,14 @@
-import { API_URL, DATA } from "../const";
-import { getData } from "../getData";
-import { renderCard } from "../render/renderCard";
-import { renderCart } from "../render/renderCart";
-import { renderHero } from "../render/renderHero";
-import { renderNavigation } from "../render/renderNavigation";
-import { renderOrder } from "../render/renderOrder";
-import { renderProducts } from "../render/renderProducts";
+import { API_URL, DATA } from '../const';
+import { getData } from '../getData';
+import { renderCard } from '../render/renderCard';
+import { renderCart } from '../render/renderCart';
+import { renderHero } from '../render/renderHero';
+import { renderNavigation } from '../render/renderNavigation';
+import { renderOrder } from '../render/renderOrder';
+import { renderProducts } from '../render/renderProducts';
 
 export const cardController = async (routerData) => {
 	const { id } = routerData.data;
-
 	const data = await getData(`${API_URL}/api/goods/${id}`);
 	const { gender, category } = data;
 
@@ -17,7 +16,7 @@ export const cardController = async (routerData) => {
 	renderHero({ render: false });
 	renderCard({ data, render: true });
 	renderProducts({
-		title: "Вам так же может понравиться",
+		title: 'Вам так же может понравиться',
 		params: {
 			count: 4,
 			gender: gender,
