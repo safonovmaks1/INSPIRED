@@ -1,8 +1,8 @@
 import { API_URL, COUNT_PAGINATION, DATA, products } from '../const';
-import { getFavorite } from '../controller/favoriteController';
 import { getData } from '../getData';
 import { createElement } from '../utils/createElement';
 import { renderPagination } from './renderPagination';
+import { getFavorite } from '../controller/favoriteController';
 
 export const renderProducts = async ({ title, params, render }) => {
 	products.textContent = '';
@@ -34,7 +34,7 @@ export const renderProducts = async ({ title, params, render }) => {
 		}
 	);
 
-	if (Object.hasOwn(data, 'totalCount')) {
+	if (data.hasOwnProperty('totalCount')) {
 		createElement(
 			'sup',
 			{
@@ -46,16 +46,17 @@ export const renderProducts = async ({ title, params, render }) => {
 			}
 		);
 
-		if (!data.totalCount) {
+		if (!Array.isArray(data) && !data.totalCount) {
 			createElement(
 				'p',
 				{
 					className: 'goods__warning',
 					textContent: `По вашему запросу ничего не найдено...`,
 				},
-				{ parent: container }
+				{
+					parent: container,
+				}
 			);
-
 			return;
 		}
 	}
@@ -73,9 +74,10 @@ export const renderProducts = async ({ title, params, render }) => {
 				className: 'product',
 				innerHTML: `
 				<a href="#/product/${product.id}" class="product__link">
-					<img src="${API_URL}/${product.pic}" alt="${
-					product.title
-				}" class="product__image" />
+					<img
+						src="${API_URL}/${product.pic}"
+						alt="${product.title}"
+						class="product__image" />
 					<h3 class="product__title">${product.title}</h3>
 				</a>
 

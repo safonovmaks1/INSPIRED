@@ -32,14 +32,12 @@ export const handlerFavorite = (e) => {
 	if (target.closest('.favorite_active')) {
 		removeFavorite(target.dataset.id);
 		target.classList.remove('favorite_active');
-		console.log(getFavorite());
 		return;
 	}
 
 	if (target.closest('.favorite')) {
 		addFavorite(target.dataset.id);
 		target.classList.add('favorite_active');
-		console.log(getFavorite());
 		return;
 	}
 };

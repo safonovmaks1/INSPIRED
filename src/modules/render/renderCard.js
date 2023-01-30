@@ -1,5 +1,5 @@
 import { API_URL, card, DATA } from '../const';
-import { addProductCart } from '../controller/cartController';
+import { addProductCart, calcTotalPrice } from '../controller/cartController';
 import { getFavorite, handlerFavorite } from '../controller/favoriteController';
 import { createElement } from '../utils/createElement';
 import { renderCount } from './renderCount';
@@ -44,8 +44,10 @@ export const renderCard = ({ data, render }) => {
 					e.preventDefault();
 					const formData = new FormData(elem);
 					const product = Object.fromEntries(formData);
+
 					if (product.color && product.size && product.count) {
 						addProductCart(product);
+						calcTotalPrice.updateCount();
 						return;
 					}
 
@@ -215,8 +217,7 @@ export const renderCard = ({ data, render }) => {
 		'button',
 		{
 			className: `card__favorite favorite
-			${getFavorite().includes(id) ? 'favorite_active' : ''}
-			`,
+			${getFavorite().includes(id) ? 'favorite_active' : ''}`,
 			ariaLabel: 'Добавить в избранное',
 			type: 'button',
 		},

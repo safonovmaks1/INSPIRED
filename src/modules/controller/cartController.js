@@ -7,7 +7,7 @@ import { renderNavigation } from '../render/renderNavigation';
 import { renderOrder } from '../render/renderOrder';
 import { renderProducts } from '../render/renderProducts';
 
-const cartGoodsStore = {
+export const cartGoodsStore = {
 	goods: [],
 	_add(product) {
 		if (!this.goods.some((item) => item.id === product.id)) {
@@ -31,9 +31,13 @@ const cartGoodsStore = {
 export const calcTotalPrice = {
 	elemTotalPrice: null,
 	elemCount: null,
-	update() {
+	updateCount() {
 		const cartGoods = getCart();
-		this.count = cartGoods.length;
+		this.count = cartGoods.reduce((acc, item) => +item.count + acc, 0);
+		this.writeCount();
+	},
+	updateTotalPrice() {
+		const cartGoods = getCart();
 		this.totalPrice = cartGoods.reduce((sum, item) => {
 			const product = cartGoodsStore.getProduct(item.id);
 			return product.price * item.count + sum;
@@ -43,7 +47,13 @@ export const calcTotalPrice = {
 	writeTotal(elem = this.elemTotalPrice) {
 		if (elem) {
 			this.elemTotalPrice = elem;
-			elem.textContent = `${this.totalPrice}`;
+			elem.textContent = this.totalPrice;
+		}
+	},
+	writeCount(elem = this.elemCount) {
+		if (elem) {
+			this.elemCount = elem;
+			elem.textContent = this.count;
 		}
 	},
 };
@@ -90,6 +100,10 @@ export const removeCart = (product) => {
 
 	localStorage.setItem('cart', JSON.stringify(productList));
 	return true;
+};
+
+export const clearCart = () => {
+	localStorage.removeItem('cart');
 };
 
 export const cartController = async () => {

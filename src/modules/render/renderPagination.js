@@ -66,9 +66,9 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 			},
 			{
 				parent: wrapperPagination,
-				// cb(link) {
-				// 	wrapperPagination.prepend(link)
-				// },
+				cb(link) {
+					wrapperPagination.prepend(link);
+				},
 			}
 		),
 			createElement(

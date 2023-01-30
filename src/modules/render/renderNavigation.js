@@ -21,6 +21,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 	}
 	oldGender = gender;
 	oldCategory = category;
+
 	flag = true;
 
 	navigation.textContent = '';

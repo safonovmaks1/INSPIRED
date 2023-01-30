@@ -1,6 +1,7 @@
 export const getData = async (urlApi, param, cbError = () => {}) => {
 	try {
 		const url = new URL(urlApi);
+
 		if (param && typeof param === 'object') {
 			for (const key in param) {
 				url.searchParams.set(key, param[key]);
