@@ -33,7 +33,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 		},
 		{
 			parent: navigation,
-		}
+		},
 	);
 
 	const genderList = createElement(
@@ -43,7 +43,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 		},
 		{
 			parent: container,
-		}
+		},
 	);
 
 	for (const genderName in DATA.navigation) {
@@ -64,13 +64,13 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 					},
 					{
 						parent: genderList,
-					}
+					},
 				),
-			}
+			},
 		);
 	}
 
-	const categoryList = DATA.navigation[gender].list.map((item) =>
+	const categoryList = DATA.navigation[gender].list.map(item =>
 		createElement(
 			'li',
 			{
@@ -80,25 +80,21 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 				append: createElement(
 					'a',
 					{
-						className: `category__link ${
-							category === item.slug ? 'category__link_active' : ''
-						}`,
+						className: `category__link ${category === item.slug ? 'category__link_active' : ''}`,
 						textContent: item.title,
 						href: `#/${gender}/${item.slug}`,
 					},
 					{
 						cb(elem) {
 							elem.addEventListener('click', () => {
-								document
-									.querySelector('.category__link_active')
-									?.classList.remove('category__link_active');
+								document.querySelector('.category__link_active')?.classList.remove('category__link_active');
 								elem.classList.add('category__link_active');
 							});
 						},
-					}
+					},
 				),
-			}
-		)
+			},
+		),
 	);
 
 	createElement(
@@ -109,6 +105,6 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 		{
 			parent: container,
 			appends: categoryList,
-		}
+		},
 	);
 };

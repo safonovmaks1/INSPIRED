@@ -11,7 +11,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 		},
 		{
 			parent: wrapperPagination,
-		}
+		},
 	);
 
 	const isNotStart = page - Math.floor(count / 2) > 1;
@@ -45,7 +45,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 					className: `pagination__link
 					${page === n ? 'pagination__link_active' : ''}`,
 				}),
-			}
+			},
 		);
 	}
 
@@ -69,7 +69,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 				cb(link) {
 					wrapperPagination.prepend(link);
 				},
-			}
+			},
 		),
 			createElement(
 				'a',
@@ -87,7 +87,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 				},
 				{
 					parent: wrapperPagination,
-				}
+				},
 			);
 	}
 };

@@ -10,13 +10,13 @@ import { renderProducts } from '../render/renderProducts';
 export const cartGoodsStore = {
 	goods: [],
 	_add(product) {
-		if (!this.goods.some((item) => item.id === product.id)) {
+		if (!this.goods.some(item => item.id === product.id)) {
 			this.goods.push(product);
 		}
 	},
 	add(goods) {
 		if (Array.isArray(goods)) {
-			goods.forEach((product) => {
+			goods.forEach(product => {
 				this._add(product);
 			});
 		} else {
@@ -24,7 +24,7 @@ export const cartGoodsStore = {
 		}
 	},
 	getProduct(id) {
-		return this.goods.find((item) => item.id === id);
+		return this.goods.find(item => item.id === id);
 	},
 };
 
@@ -63,12 +63,8 @@ export const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
 export const addProductCart = (product, equal) => {
 	let isCart = false;
 
-	const productList = getCart().map((item) => {
-		if (
-			item.id === product.id &&
-			item.color === product.color &&
-			item.size === product.size
-		) {
+	const productList = getCart().map(item => {
+		if (item.id === product.id && item.color === product.color && item.size === product.size) {
 			if (equal) {
 				item.count = product.count;
 			} else {
@@ -88,14 +84,9 @@ export const addProductCart = (product, equal) => {
 	localStorage.setItem('cart', JSON.stringify(productList));
 };
 
-export const removeCart = (product) => {
+export const removeCart = product => {
 	const productList = getCart().filter(
-		(item) =>
-			!(
-				item.id === product.id &&
-				item.color === product.color &&
-				item.size === product.size
-			)
+		item => !(item.id === product.id && item.color === product.color && item.size === product.size),
 	);
 
 	localStorage.setItem('cart', JSON.stringify(productList));
@@ -107,7 +98,7 @@ export const clearCart = () => {
 };
 
 export const cartController = async () => {
-	const idList = getCart().map((item) => item.id);
+	const idList = getCart().map(item => item.id);
 	// const idList = [...new Set(getCart().map((item) => item.id))]; // уникальные id
 	const data = await getData(`${API_URL}/api/goods?list=${idList}&count=all`);
 

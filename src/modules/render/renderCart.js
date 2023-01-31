@@ -1,11 +1,5 @@
 import { API_URL, cart } from '../const';
-import {
-	addProductCart,
-	calcTotalPrice,
-	cartGoodsStore,
-	getCart,
-	removeCart,
-} from '../controller/cartController';
+import { addProductCart, calcTotalPrice, cartGoodsStore, getCart, removeCart } from '../controller/cartController';
 import { createElement } from '../utils/createElement';
 import { renderCount } from './renderCount';
 
@@ -24,7 +18,7 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 		},
 		{
 			parent: cart,
-		}
+		},
 	);
 
 	const cartList = createElement(
@@ -32,10 +26,10 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 		{
 			className: 'cart__list',
 		},
-		{ parent: container }
+		{ parent: container },
 	);
 
-	getCart().forEach((product) => {
+	getCart().forEach(product => {
 		const data = cartGoodsStore.getProduct(product.id);
 
 		const li = createElement(
@@ -43,7 +37,7 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 			{
 				className: 'cart__item',
 			},
-			{ parent: cartList }
+			{ parent: cartList },
 		);
 
 		const article = createElement(
@@ -53,7 +47,7 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 			},
 			{
 				parent: li,
-			}
+			},
 		);
 
 		article.insertAdjacentHTML(
@@ -86,7 +80,7 @@ export const renderCart = ({ render, cartGoodsStore }) => {
         </div>
       </div>
 
-    `
+    `,
 		);
 
 		createElement(
@@ -107,12 +101,12 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 						}
 					});
 				},
-			}
+			},
 		);
 
 		/* <button class="item__del" aria-label="Удалить товар из корзины"></button> */
 
-		const countBlock = renderCount(product.count, 'item__count', (count) => {
+		const countBlock = renderCount(product.count, 'item__count', count => {
 			product.count = count;
 			addProductCart(product, true);
 			calcTotalPrice.updateTotalPrice();
@@ -130,7 +124,7 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 		},
 		{
 			parent: container,
-		}
+		},
 	);
 
 	createElement(
@@ -149,8 +143,8 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 						calcTotalPrice.updateTotalPrice();
 						calcTotalPrice.writeTotal(elem);
 					},
-				}
+				},
 			),
-		}
+		},
 	);
 };

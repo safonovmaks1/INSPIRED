@@ -15,7 +15,7 @@ export const renderCount = (count, className, returnCount = () => {}) => {
 		},
 		{
 			parent: control,
-		}
+		},
 	);
 
 	const number = createElement(
@@ -26,7 +26,7 @@ export const renderCount = (count, className, returnCount = () => {}) => {
 		},
 		{
 			parent: control,
-		}
+		},
 	);
 
 	const plus = createElement(
@@ -38,7 +38,7 @@ export const renderCount = (count, className, returnCount = () => {}) => {
 		},
 		{
 			parent: control,
-		}
+		},
 	);
 
 	const input = createElement(
@@ -50,7 +50,7 @@ export const renderCount = (count, className, returnCount = () => {}) => {
 		},
 		{
 			parent: control,
-		}
+		},
 	);
 
 	countController(minus, number, plus, input, returnCount);

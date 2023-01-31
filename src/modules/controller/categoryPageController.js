@@ -6,7 +6,7 @@ import { renderNavigation } from '../render/renderNavigation';
 import { renderOrder } from '../render/renderOrder';
 import { renderProducts } from '../render/renderProducts';
 
-export const categoryPageController = (routerData) => {
+export const categoryPageController = routerData => {
 	const { gender, category } = routerData.data;
 
 	if (!Object.keys(DATA.navigation).includes(gender)) {
@@ -18,9 +18,7 @@ export const categoryPageController = (routerData) => {
 		params.page = routerData.params.page;
 	}
 
-	const { title } = DATA.navigation[gender].list.find(
-		(item) => item.slug === category
-	);
+	const { title } = DATA.navigation[gender].list.find(item => item.slug === category);
 
 	renderNavigation({ gender, category, render: true });
 	renderHero({ render: false });

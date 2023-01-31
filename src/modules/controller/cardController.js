@@ -7,7 +7,7 @@ import { renderNavigation } from '../render/renderNavigation';
 import { renderOrder } from '../render/renderOrder';
 import { renderProducts } from '../render/renderProducts';
 
-export const cardController = async (routerData) => {
+export const cardController = async routerData => {
 	const { id } = routerData.data;
 	const data = await getData(`${API_URL}/api/goods/${id}`);
 	const { gender, category } = data;

@@ -21,7 +21,7 @@ export const fbLink = createElement('a', {
 	href: '#',
 });
 
-export const renderFooter = (gender) => {
+export const renderFooter = gender => {
 	footer.textContent = '';
 
 	const footerContainer = createElement(
@@ -31,7 +31,7 @@ export const renderFooter = (gender) => {
 		},
 		{
 			parent: footer,
-		}
+		},
 	);
 
 	const footerWrapper = createElement(
@@ -41,7 +41,7 @@ export const renderFooter = (gender) => {
 		},
 		{
 			parent: footerContainer,
-		}
+		},
 	);
 
 	const footerCategory = createElement(
@@ -59,9 +59,9 @@ export const renderFooter = (gender) => {
 				},
 				{
 					parent: footerCategory,
-				}
+				},
 			),
-		}
+		},
 	);
 
 	const footerCategoryList = createElement(
@@ -71,7 +71,7 @@ export const renderFooter = (gender) => {
 		},
 		{
 			parent: footerCategory,
-		}
+		},
 	);
 
 	for (const key in DATA.navigation) {
@@ -102,11 +102,11 @@ export const renderFooter = (gender) => {
 								// 		router.navigate(key)
 								// 	})
 								// },
-							}
+							},
 						),
-					}
+					},
 				),
-			}
+			},
 		);
 
 		createElement(
@@ -116,7 +116,7 @@ export const renderFooter = (gender) => {
 			},
 			{
 				parent: footerCategoryItem,
-				appends: DATA.navigation[key].list.map((item) =>
+				appends: DATA.navigation[key].list.map(item =>
 					createElement(
 						'li',
 						{
@@ -130,12 +130,12 @@ export const renderFooter = (gender) => {
 									href: `#/${key}/${item.slug}`,
 									textContent: item.title,
 								},
-								{}
+								{},
 							),
-						}
-					)
+						},
+					),
 				),
-			}
+			},
 		);
 	}
 
@@ -155,7 +155,7 @@ export const renderFooter = (gender) => {
 					},
 					{
 						parent: footerSocial,
-					}
+					},
 				),
 				createElement(
 					'p',
@@ -165,7 +165,7 @@ export const renderFooter = (gender) => {
 					},
 					{
 						parent: footerSocial,
-					}
+					},
 				),
 				createElement(
 					'ul',
@@ -182,7 +182,7 @@ export const renderFooter = (gender) => {
 								},
 								{
 									append: vkLink,
-								}
+								},
 							),
 							createElement(
 								'li',
@@ -191,13 +191,13 @@ export const renderFooter = (gender) => {
 								},
 								{
 									append: fbLink,
-								}
+								},
 							),
 						],
-					}
+					},
 				),
 			],
-		}
+		},
 	);
 
 	const footerContacts = createElement(
@@ -217,7 +217,7 @@ export const renderFooter = (gender) => {
 					},
 					{
 						parent: footerContacts,
-					}
+					},
 				),
 				createElement(
 					'a',
@@ -228,10 +228,10 @@ export const renderFooter = (gender) => {
 					},
 					{
 						parent: footerContacts,
-					}
+					},
 				),
 			],
-		}
+		},
 	);
 
 	const footerCopyright = createElement(
@@ -248,9 +248,9 @@ export const renderFooter = (gender) => {
 				},
 				{
 					parent: footerCopyright,
-				}
+				},
 			),
-		}
+		},
 	);
 
 	const footerDev = createElement(
@@ -281,7 +281,7 @@ export const renderFooter = (gender) => {
 									href: `https://t.me/Mrshmallowww`,
 									target: '_blank',
 								}),
-							}
+							},
 						),
 						createElement(
 							'li',
@@ -296,11 +296,11 @@ export const renderFooter = (gender) => {
 									href: `https://t.me/MaksSafonov`,
 									target: '_blank',
 								}),
-							}
+							},
 						),
 					],
-				}
+				},
 			),
-		}
+		},
 	);
 };

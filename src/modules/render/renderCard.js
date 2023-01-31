@@ -16,7 +16,7 @@ export const renderCard = ({ data, render }) => {
 		{
 			className: 'container card__container',
 		},
-		{ parent: card }
+		{ parent: card },
 	);
 
 	createElement(
@@ -28,7 +28,7 @@ export const renderCard = ({ data, render }) => {
 		},
 		{
 			parent: container,
-		}
+		},
 	);
 
 	const form = createElement(
@@ -40,7 +40,7 @@ export const renderCard = ({ data, render }) => {
 		{
 			parent: container,
 			cb(elem) {
-				elem.addEventListener('submit', (e) => {
+				elem.addEventListener('submit', e => {
 					e.preventDefault();
 					const formData = new FormData(elem);
 					const product = Object.fromEntries(formData);
@@ -70,11 +70,11 @@ export const renderCard = ({ data, render }) => {
 									p.remove();
 								}, 3000);
 							},
-						}
+						},
 					);
 				});
 			},
-		}
+		},
 	);
 
 	form.insertAdjacentHTML(
@@ -86,7 +86,7 @@ export const renderCard = ({ data, render }) => {
 			<span class="card__subtitle">Артикул</span>
 			<span class="card__id">${id}</span>
 			<input type="hidden" name="id" value="${id}" />
-		</div>`
+		</div>`,
 	);
 
 	const cardColor = createElement(
@@ -95,7 +95,7 @@ export const renderCard = ({ data, render }) => {
 			className: 'card__color',
 			innerHTML: '<p class="card__subtitle card__color-title">Цвет</p>',
 		},
-		{ parent: form }
+		{ parent: form },
 	);
 
 	createElement(
@@ -107,14 +107,14 @@ export const renderCard = ({ data, render }) => {
 			parent: cardColor,
 			cb(colorList) {
 				colors.forEach((colorId, i) => {
-					const color = DATA.colors.find((color) => color.id === colorId).title;
+					const color = DATA.colors.find(color => color.id === colorId).title;
 
 					const label = createElement(
 						'label',
 						{
 							className: `card__color-item color color_${color}`,
 						},
-						{ parent: colorList }
+						{ parent: colorList },
 					);
 
 					createElement(
@@ -128,7 +128,7 @@ export const renderCard = ({ data, render }) => {
 						},
 						{
 							parent: label,
-						}
+						},
 					);
 
 					createElement(
@@ -136,11 +136,11 @@ export const renderCard = ({ data, render }) => {
 						{
 							className: 'color__check',
 						},
-						{ parent: label }
+						{ parent: label },
 					);
 				});
 			},
-		}
+		},
 	);
 
 	const cardSize = createElement(
@@ -149,7 +149,7 @@ export const renderCard = ({ data, render }) => {
 			className: 'card__size',
 			innerHTML: '<p class="card__subtitle card__size-title">Размер</p>',
 		},
-		{ parent: form }
+		{ parent: form },
 	);
 
 	createElement(
@@ -160,13 +160,13 @@ export const renderCard = ({ data, render }) => {
 		{
 			parent: cardSize,
 			cb(sizeList) {
-				size.forEach((item) => {
+				size.forEach(item => {
 					const label = createElement(
 						'label',
 						{
 							className: `card__size-item size`,
 						},
-						{ parent: sizeList }
+						{ parent: sizeList },
 					);
 
 					createElement(
@@ -179,7 +179,7 @@ export const renderCard = ({ data, render }) => {
 						},
 						{
 							parent: label,
-						}
+						},
 					);
 
 					createElement(
@@ -188,11 +188,11 @@ export const renderCard = ({ data, render }) => {
 							className: 'size__check',
 							textContent: item,
 						},
-						{ parent: label }
+						{ parent: label },
 					);
 				});
 			},
-		}
+		},
 	);
 
 	form.insertAdjacentHTML(
@@ -202,7 +202,7 @@ export const renderCard = ({ data, render }) => {
 				<p class="card__subtitle card__description-title">Описание</p>
 				<p class="card__description-text">${description}</p>
 			</div>
-	`
+	`,
 	);
 
 	const count = renderCount(1, 'card__count');
@@ -226,7 +226,7 @@ export const renderCard = ({ data, render }) => {
 				elem.dataset.id = id;
 				elem.addEventListener('click', handlerFavorite);
 			},
-		}
+		},
 	);
 
 	createElement(
@@ -234,6 +234,6 @@ export const renderCard = ({ data, render }) => {
 		{
 			className: 'card__control',
 		},
-		{ parent: form, appends: [count, addCart, favoriteBtn] }
+		{ parent: form, appends: [count, addCart, favoriteBtn] },
 	);
 };

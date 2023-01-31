@@ -25,7 +25,7 @@ const container = createElement(
 	},
 	{
 		parent: search,
-	}
+	},
 );
 
 const form = createElement(
@@ -36,7 +36,7 @@ const form = createElement(
 	{
 		parent: container,
 		cb: searchConroller,
-	}
+	},
 );
 
 const inputSearch = createElement(
@@ -47,7 +47,7 @@ const inputSearch = createElement(
 		name: 'search',
 		placeholder: 'Найти...',
 	},
-	{ parent: form }
+	{ parent: form },
 );
 
 createElement(
@@ -59,7 +59,7 @@ createElement(
 	},
 	{
 		parent: form,
-	}
+	},
 );
 
 const searchError = createElement(
@@ -71,7 +71,7 @@ const searchError = createElement(
 	},
 	{
 		parent: form,
-	}
+	},
 );
 
 export const showSearchError = () => {

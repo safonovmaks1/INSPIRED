@@ -19,7 +19,7 @@ export const searchButton = createElement(
 		cb(btn) {
 			btn.addEventListener('click', searchToggle);
 		},
-	}
+	},
 );
 
 export const cartLink = createElement(
@@ -46,9 +46,9 @@ export const cartLink = createElement(
 					calcTotalPrice.updateCount();
 					calcTotalPrice.writeCount(elem);
 				},
-			}
+			},
 		),
-	}
+	},
 );
 
 export const favoriteLink = createElement('a', {
@@ -77,7 +77,7 @@ createElement(
 	},
 	{
 		parent: container,
-	}
+	},
 );
 
 const nav = createElement(
@@ -85,7 +85,7 @@ const nav = createElement(
 	{
 		className: 'header__navigation',
 	},
-	{ parent: container }
+	{ parent: container },
 );
 
 createElement(
@@ -103,7 +103,7 @@ createElement(
 				},
 				{
 					append: searchButton,
-				}
+				},
 			),
 			createElement(
 				'li',
@@ -112,7 +112,7 @@ createElement(
 				},
 				{
 					append: cartLink,
-				}
+				},
 			),
 			createElement(
 				'li',
@@ -121,10 +121,10 @@ createElement(
 				},
 				{
 					append: favoriteLink,
-				}
+				},
 			),
 		],
-	}
+	},
 );
 
 export const renderHeader = () => {

@@ -20,7 +20,7 @@ export const renderProducts = async ({ title, params, render }) => {
 		{
 			className: 'container',
 		},
-		{ parent: products }
+		{ parent: products },
 	);
 
 	const titleElem = createElement(
@@ -31,7 +31,7 @@ export const renderProducts = async ({ title, params, render }) => {
 		},
 		{
 			parent: container,
-		}
+		},
 	);
 
 	if (data.hasOwnProperty('totalCount')) {
@@ -43,7 +43,7 @@ export const renderProducts = async ({ title, params, render }) => {
 			},
 			{
 				parent: titleElem,
-			}
+			},
 		);
 
 		if (!Array.isArray(data) && !data.totalCount) {
@@ -55,7 +55,7 @@ export const renderProducts = async ({ title, params, render }) => {
 				},
 				{
 					parent: container,
-				}
+				},
 			);
 			return;
 		}
@@ -63,7 +63,7 @@ export const renderProducts = async ({ title, params, render }) => {
 
 	const favoriteList = getFavorite();
 
-	const listCard = goods.map((product) => {
+	const listCard = goods.map(product => {
 		const li = createElement('li', {
 			className: 'goods__item',
 		});
@@ -94,7 +94,7 @@ export const renderProducts = async ({ title, params, render }) => {
 			},
 			{
 				parent: li,
-			}
+			},
 		);
 
 		createElement(
@@ -105,13 +105,13 @@ export const renderProducts = async ({ title, params, render }) => {
 			{
 				parent: article,
 				appends: product.colors.map((colorId, i) => {
-					const color = DATA.colors.find((item) => item.id == colorId);
+					const color = DATA.colors.find(item => item.id == colorId);
 
 					return createElement('li', {
 						className: `color color_${color.title} ${i ? '' : 'color_check'}`,
 					});
 				}),
-			}
+			},
 		);
 
 		return li;
@@ -125,7 +125,7 @@ export const renderProducts = async ({ title, params, render }) => {
 		{
 			appends: listCard,
 			parent: container,
-		}
+		},
 	);
 
 	if (data.pages && data.pages > 1) {
@@ -134,7 +134,7 @@ export const renderProducts = async ({ title, params, render }) => {
 			{
 				className: 'goods__pagination pagination',
 			},
-			{ parent: container }
+			{ parent: container },
 		);
 
 		renderPagination(pagination, data.page, data.pages, COUNT_PAGINATION);

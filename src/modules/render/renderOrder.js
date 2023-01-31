@@ -1,15 +1,10 @@
 import { API_URL, order } from '../const';
-import {
-	calcTotalPrice,
-	cartGoodsStore,
-	clearCart,
-	getCart,
-} from '../controller/cartController';
+import { calcTotalPrice, cartGoodsStore, clearCart, getCart } from '../controller/cartController';
 import { sendOrder } from '../controller/orderController';
 import { createElement } from '../utils/createElement';
 import { router } from '../utils/router';
 
-const showOrderInfo = (data) => {
+const showOrderInfo = data => {
 	const modal = createElement(
 		'div',
 		{
@@ -18,21 +13,17 @@ const showOrderInfo = (data) => {
 		{
 			parent: document.body,
 			cb(el) {
-				el.addEventListener('click', (e) => {
+				el.addEventListener('click', e => {
 					if (e.target === el) {
 						el.remove();
 						router.navigate('/');
 					}
 				});
 			},
-		}
+		},
 	);
 
-	const modalBody = createElement(
-		'div',
-		{ className: 'modal__body' },
-		{ parent: modal }
-	);
+	const modalBody = createElement('div', { className: 'modal__body' }, { parent: modal });
 
 	modalBody.insertAdjacentHTML(
 		'beforeend',
@@ -84,7 +75,7 @@ const showOrderInfo = (data) => {
 				}</span>
 			</li>
 		</ul>
-	`
+	`,
 	);
 
 	const goodsList = createElement(
@@ -95,7 +86,7 @@ const showOrderInfo = (data) => {
 		{
 			parent: modalBody,
 			appends: [
-				...data.order.map((item) => {
+				...data.order.map(item => {
 					const goodsListItem = createElement('li', {
 						className: 'goods-list__item',
 					});
@@ -111,7 +102,7 @@ const showOrderInfo = (data) => {
 						},
 						{
 							parent: goodsListItem,
-						}
+						},
 					);
 
 					createElement(
@@ -122,13 +113,13 @@ const showOrderInfo = (data) => {
 						},
 						{
 							parent: goodsListItem,
-						}
+						},
 					);
 
 					return goodsListItem;
 				}),
 			],
-		}
+		},
 	);
 
 	const cartTotal = createElement(
@@ -137,7 +128,7 @@ const showOrderInfo = (data) => {
 			className: 'modal__total',
 			innerHTML: '<p class="modal__total-title">Итого:</p>',
 		},
-		{ parent: modalBody }
+		{ parent: modalBody },
 	);
 
 	createElement(
@@ -155,9 +146,9 @@ const showOrderInfo = (data) => {
 					cb(elem) {
 						calcTotalPrice.writeTotal(elem);
 					},
-				}
+				},
 			),
-		}
+		},
 	);
 
 	createElement(
@@ -179,7 +170,7 @@ const showOrderInfo = (data) => {
 					router.navigate('/');
 				});
 			},
-		}
+		},
 	);
 
 	clearCart();
@@ -200,7 +191,7 @@ export const renderOrder = ({ render }) => {
 		},
 		{
 			parent: order,
-		}
+		},
 	);
 
 	const orderForm = createElement(
@@ -211,7 +202,7 @@ export const renderOrder = ({ render }) => {
 		{
 			parent: container,
 			cb(form) {
-				form.addEventListener('submit', (e) => {
+				form.addEventListener('submit', e => {
 					e.preventDefault();
 
 					const formData = new FormData(form);
@@ -219,14 +210,14 @@ export const renderOrder = ({ render }) => {
 					data.order = getCart();
 
 					if (data.order.length) {
-						sendOrder(data).then((dataOrder) => {
+						sendOrder(data).then(dataOrder => {
 							showOrderInfo(dataOrder);
 						});
 					} else {
 					}
 				});
 			},
-		}
+		},
 	);
 
 	orderForm.insertAdjacentHTML(
@@ -263,6 +254,6 @@ export const renderOrder = ({ render }) => {
 		</fieldset>
 
 		<button class="order__submit main-button" type="submit">Оформить</button>
-	`
+	`,
 	);
 };

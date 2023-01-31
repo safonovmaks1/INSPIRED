@@ -1,8 +1,4 @@
-export const createElement = (
-	tag,
-	attr,
-	{ append, appends, parent, cb } = {}
-) => {
+export const createElement = (tag, attr, { append, appends, parent, cb } = {}) => {
 	const element = document.createElement(tag);
 
 	if (attr) {
@@ -13,7 +9,7 @@ export const createElement = (
 		element.append(append);
 	}
 
-	if (appends && appends.every((item) => item instanceof HTMLElement)) {
+	if (appends && appends.every(item => item instanceof HTMLElement)) {
 		element.append(...appends);
 	}
 

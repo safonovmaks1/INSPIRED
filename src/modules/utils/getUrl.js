@@ -1,6 +1,6 @@
 import { router } from './router';
 
-export const getUrl = (params) => {
+export const getUrl = params => {
 	const currentLocation = router.getCurrentLocation();
 
 	let url = currentLocation.url;

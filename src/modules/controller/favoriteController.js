@@ -6,18 +6,17 @@ import { renderCard } from '../render/renderCard';
 import { renderCart } from '../render/renderCart';
 import { renderOrder } from '../render/renderOrder';
 
-export const getFavorite = () =>
-	JSON.parse(localStorage.getItem('favorite') || '[]');
+export const getFavorite = () => JSON.parse(localStorage.getItem('favorite') || '[]');
 
-const addFavorite = (id) => {
+const addFavorite = id => {
 	const favoriteList = getFavorite();
 	favoriteList.push(id);
 	localStorage.setItem('favorite', JSON.stringify(favoriteList));
 };
 
-const removeFavorite = (id) => {
+const removeFavorite = id => {
 	const favoriteList = getFavorite();
-	const index = favoriteList.findIndex((item) => item === id);
+	const index = favoriteList.findIndex(item => item === id);
 
 	if (index === -1) return;
 
@@ -26,7 +25,7 @@ const removeFavorite = (id) => {
 	localStorage.setItem('favorite', JSON.stringify(favoriteList));
 };
 
-export const handlerFavorite = (e) => {
+export const handlerFavorite = e => {
 	const target = e.target;
 
 	if (target.closest('.favorite_active')) {

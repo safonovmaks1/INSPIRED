@@ -12,7 +12,7 @@ const content = createElement(
 	},
 	{
 		parent: container,
-	}
+	},
 );
 
 const titleElem = createElement(
@@ -22,7 +22,7 @@ const titleElem = createElement(
 	},
 	{
 		parent: content,
-	}
+	},
 );
 
 const heroLink = createElement(
@@ -33,7 +33,7 @@ const heroLink = createElement(
 	},
 	{
 		parent: content,
-	}
+	},
 );
 
 export const renderHero = ({ gender, render }) => {

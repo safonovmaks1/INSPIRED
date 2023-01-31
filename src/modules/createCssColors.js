@@ -1,9 +1,9 @@
 import { createElement } from './utils/createElement';
 
-export const createCssColors = (colors) => {
+export const createCssColors = colors => {
 	let style = createElement('style');
 
-	colors.forEach((color) => {
+	colors.forEach(color => {
 		style.textContent += `
 			.color_${color.title}:after{
 				background-color: ${color.code};
