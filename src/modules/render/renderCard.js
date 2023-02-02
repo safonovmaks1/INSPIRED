@@ -1,6 +1,6 @@
 import { API_URL, card, DATA } from '../const';
-import { addProductCart, calcTotalPrice } from '../controller/cartController';
-import { getFavorite, handlerFavorite } from '../controller/favoriteController';
+import { addProductCart, calcTotalPrice } from '../controllers/cartController';
+import { getFavorite, handlerFavorite } from '../controllers/favoriteController';
 import { createElement } from '../utils/createElement';
 import { renderCount } from './renderCount';
 
@@ -9,6 +9,7 @@ export const renderCard = ({ data, render }) => {
 	if (!render) {
 		return;
 	}
+
 	const { id, title, description, price, colors, pic, size } = data;
 
 	const container = createElement(
@@ -26,9 +27,7 @@ export const renderCard = ({ data, render }) => {
 			src: `${API_URL}/${pic}`,
 			alt: title,
 		},
-		{
-			parent: container,
-		},
+		{ parent: container },
 	);
 
 	const form = createElement(
@@ -59,9 +58,9 @@ export const renderCard = ({ data, render }) => {
 								? product.color
 									? product.count
 										? 'Что-то пошло не так'
-										: 'Кол-во не корректное '
+										: 'Кол-во не корректное'
 									: 'Выберите цвет'
-								: 'Выберите размер',
+								: ' Выберите размер',
 						},
 						{
 							parent: form,
@@ -73,6 +72,8 @@ export const renderCard = ({ data, render }) => {
 						},
 					);
 				});
+
+				//addProductCart()
 			},
 		},
 	);
@@ -80,13 +81,16 @@ export const renderCard = ({ data, render }) => {
 	form.insertAdjacentHTML(
 		'beforeend',
 		`
-		<h2 class="card__title">${title}</h2>
-		<p class="card__price">руб ${price}</p>
-		<div class="card__vendor-code">
-			<span class="card__subtitle">Артикул</span>
-			<span class="card__id">${id}</span>
-			<input type="hidden" name="id" value="${id}" />
-		</div>`,
+    <h2 class="card__title">${title}</h2>
+
+    <p class="card__price">руб ${price}</p>
+
+    <div class="card__vendor-code">
+      <span class="card__subtitle">Артикул</span>
+      <span class="card__id">${id}</span>
+      <input type="hidden" name="id" value="${id}">
+    </div>
+  `,
 	);
 
 	const cardColor = createElement(
@@ -95,7 +99,9 @@ export const renderCard = ({ data, render }) => {
 			className: 'card__color',
 			innerHTML: '<p class="card__subtitle card__color-title">Цвет</p>',
 		},
-		{ parent: form },
+		{
+			parent: form,
+		},
 	);
 
 	createElement(
@@ -114,7 +120,9 @@ export const renderCard = ({ data, render }) => {
 						{
 							className: `card__color-item color color_${color}`,
 						},
-						{ parent: colorList },
+						{
+							parent: colorList,
+						},
 					);
 
 					createElement(
@@ -126,9 +134,7 @@ export const renderCard = ({ data, render }) => {
 							value: color,
 							checked: !i,
 						},
-						{
-							parent: label,
-						},
+						{ parent: label },
 					);
 
 					createElement(
@@ -149,7 +155,9 @@ export const renderCard = ({ data, render }) => {
 			className: 'card__size',
 			innerHTML: '<p class="card__subtitle card__size-title">Размер</p>',
 		},
-		{ parent: form },
+		{
+			parent: form,
+		},
 	);
 
 	createElement(
@@ -166,7 +174,9 @@ export const renderCard = ({ data, render }) => {
 						{
 							className: `card__size-item size`,
 						},
-						{ parent: sizeList },
+						{
+							parent: sizeList,
+						},
 					);
 
 					createElement(
@@ -177,9 +187,7 @@ export const renderCard = ({ data, render }) => {
 							name: 'size',
 							value: item,
 						},
-						{
-							parent: label,
-						},
+						{ parent: label },
 					);
 
 					createElement(
@@ -198,11 +206,12 @@ export const renderCard = ({ data, render }) => {
 	form.insertAdjacentHTML(
 		'beforeend',
 		`
-			<div class="card__description">
-				<p class="card__subtitle card__description-title">Описание</p>
-				<p class="card__description-text">${description}</p>
-			</div>
-	`,
+  <div class="card__description">
+    <p class="card__subtitle card__description-title">Описание</p>
+
+    <p class="card__description-text">${description}</p>
+  </div>
+  `,
 	);
 
 	const count = renderCount(1, 'card__count');
@@ -217,7 +226,7 @@ export const renderCard = ({ data, render }) => {
 		'button',
 		{
 			className: `card__favorite favorite
-			${getFavorite().includes(id) ? 'favorite_active' : ''}`,
+        ${getFavorite().includes(id) ? 'favorite_active' : ''}`,
 			ariaLabel: 'Добавить в избранное',
 			type: 'button',
 		},
@@ -229,11 +238,5 @@ export const renderCard = ({ data, render }) => {
 		},
 	);
 
-	createElement(
-		'div',
-		{
-			className: 'card__control',
-		},
-		{ parent: form, appends: [count, addCart, favoriteBtn] },
-	);
+	createElement('div', { className: 'card__control' }, { parent: form, appends: [count, addCart, favoriteBtn] });
 };

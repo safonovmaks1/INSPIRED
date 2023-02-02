@@ -8,7 +8,6 @@ import { renderProducts } from '../render/renderProducts';
 
 export const categoryPageController = routerData => {
 	const { gender, category } = routerData.data;
-
 	if (!Object.keys(DATA.navigation).includes(gender)) {
 		return;
 	}

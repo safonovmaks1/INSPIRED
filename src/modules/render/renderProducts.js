@@ -2,7 +2,7 @@ import { API_URL, COUNT_PAGINATION, DATA, products } from '../const';
 import { getData } from '../getData';
 import { createElement } from '../utils/createElement';
 import { renderPagination } from './renderPagination';
-import { getFavorite } from '../controller/favoriteController';
+import { getFavorite } from '../controllers/favoriteController';
 
 export const renderProducts = async ({ title, params, render }) => {
 	products.textContent = '';
@@ -38,27 +38,23 @@ export const renderProducts = async ({ title, params, render }) => {
 		createElement(
 			'sup',
 			{
-				className: 'goods__title_sup',
+				class: 'goods__title-sup',
 				innerHTML: `&nbsp(${data?.totalCount})`,
 			},
-			{
-				parent: titleElem,
-			},
+			{ parent: titleElem },
 		);
+	}
 
-		if (!Array.isArray(data) && !data.totalCount) {
-			createElement(
-				'p',
-				{
-					className: 'goods__warning',
-					textContent: `По вашему запросу ничего не найдено...`,
-				},
-				{
-					parent: container,
-				},
-			);
-			return;
-		}
+	if (!Array.isArray(data) && !data.totalCount) {
+		createElement(
+			'p',
+			{
+				className: 'goods__warning',
+				textContent: 'По вашему запросу ничего не найдено',
+			},
+			{ parent: container },
+		);
+		return;
 	}
 
 	const favoriteList = getFavorite();
@@ -73,24 +69,24 @@ export const renderProducts = async ({ title, params, render }) => {
 			{
 				className: 'product',
 				innerHTML: `
-				<a href="#/product/${product.id}" class="product__link">
-					<img
-						src="${API_URL}/${product.pic}"
-						alt="${product.title}"
-						class="product__image" />
-					<h3 class="product__title">${product.title}</h3>
-				</a>
+        <a href="#/product/${product.id}" class="product__link">
+          <img
+            src="${API_URL}/${product.pic}"
+            alt="${product.title}"
+            class="product__image">
+          <h3 class="product__title">${product.title}</h3>
+        </a>
 
-				<div class="product__row">
-					<p class="product__price">руб ${product.price}</p>
-					<button
-						class="product__btn-favorite favorite
-						${favoriteList.includes(product.id) ? 'favorite_active' : ''} "
-						aria-label="Добавить в избранное"
-						data-id=${product.id}
-					></button>
-				</div>
-			`,
+        <div class="product__row">
+          <p class="product__price">руб ${product.price}</p>
+
+          <button
+            class="product__btn-favorite favorite
+              ${favoriteList.includes(product.id) ? 'favorite_active' : ''}"
+            aria-label="добавить в избранное"
+            data-id=${product.id}></button>
+        </div>
+      `,
 			},
 			{
 				parent: li,
@@ -129,13 +125,7 @@ export const renderProducts = async ({ title, params, render }) => {
 	);
 
 	if (data.pages && data.pages > 1) {
-		const pagination = createElement(
-			'div',
-			{
-				className: 'goods__pagination pagination',
-			},
-			{ parent: container },
-		);
+		const pagination = createElement('div', { className: 'goods__pagination pagination' }, { parent: container });
 
 		renderPagination(pagination, data.page, data.pages, COUNT_PAGINATION);
 	}

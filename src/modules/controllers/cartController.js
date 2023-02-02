@@ -99,15 +99,13 @@ export const clearCart = () => {
 
 export const cartController = async () => {
 	const idList = getCart().map(item => item.id);
-	// const idList = [...new Set(getCart().map((item) => item.id))]; // уникальные id
 	const data = await getData(`${API_URL}/api/goods?list=${idList}&count=all`);
-
 	cartGoodsStore.add(data);
 
 	renderNavigation({ render: false });
 	renderHero({ render: false });
 	renderCard({ render: false });
 	renderProducts({ render: false });
-	renderCart({ render: true, cartGoodsStore });
+	renderCart({ render: true });
 	renderOrder({ render: true });
 };

@@ -7,11 +7,12 @@ let oldCategory = '';
 
 export const renderNavigation = ({ gender, category, render, repeat }) => {
 	if (!render) {
-		navigation.style.display = 'none';
+		navigation.style.dispay = 'none';
 		return;
 	} else {
-		navigation.style.display = '';
+		navigation.style.dispay = '';
 	}
+
 	if (flag && oldGender === gender && oldCategory === category) {
 		return;
 	}
@@ -19,6 +20,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 	if (repeat) {
 		gender = oldGender;
 	}
+
 	oldGender = gender;
 	oldCategory = category;
 
@@ -51,8 +53,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 			'a',
 			{
 				className: `gender__link
-				${gender === genderName ? 'gender__link_active' : ''}
-			`,
+          ${gender === genderName ? 'gender__link_active' : ''}`,
 				href: `#/${genderName}`,
 				textContent: DATA.navigation[genderName].title,
 			},
@@ -70,7 +71,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 		);
 	}
 
-	const categoryList = DATA.navigation[gender].list.map(item =>
+	const categoryElems = DATA.navigation[gender].list.map(item =>
 		createElement(
 			'li',
 			{
@@ -80,7 +81,8 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 				append: createElement(
 					'a',
 					{
-						className: `category__link ${category === item.slug ? 'category__link_active' : ''}`,
+						className: `category__link
+              ${category === item.slug ? 'category__link_active' : ''}`,
 						textContent: item.title,
 						href: `#/${gender}/${item.slug}`,
 					},
@@ -88,6 +90,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 						cb(elem) {
 							elem.addEventListener('click', () => {
 								document.querySelector('.category__link_active')?.classList.remove('category__link_active');
+
 								elem.classList.add('category__link_active');
 							});
 						},
@@ -104,7 +107,7 @@ export const renderNavigation = ({ gender, category, render, repeat }) => {
 		},
 		{
 			parent: container,
-			appends: categoryList,
+			appends: categoryElems,
 		},
 	);
 };

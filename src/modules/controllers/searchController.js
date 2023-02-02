@@ -7,7 +7,7 @@ import { renderProducts } from '../render/renderProducts';
 import { showSearchError } from '../render/renderSearch';
 import { router } from '../utils/router';
 
-export const searchConroller = formSearch => {
+export const searchController = formSearch => {
 	formSearch.addEventListener('submit', e => {
 		e.preventDefault();
 		if (formSearch.search.value.trim()) {
@@ -27,7 +27,7 @@ export const searchPageController = routerData => {
 		params.page = routerData.params.page;
 	}
 
-	renderNavigation({ repeat: true, render: true });
+	renderNavigation({ render: true, repeat: true });
 	renderHero({ render: false });
 	renderCard({ render: false });
 	renderProducts({ title: routerData.params.value, params, render: true });

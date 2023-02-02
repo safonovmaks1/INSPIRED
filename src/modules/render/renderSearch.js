@@ -1,18 +1,9 @@
-import { searchConroller } from '../controller/searchController';
+import { searchController } from '../controllers/searchController';
 import { createElement } from '../utils/createElement';
 
 export const search = createElement('div', {
 	className: 'search',
 });
-
-// export const searchToggle = () => {
-// 	if (search.classList.contains('search_show')) {
-// 		search.classList.remove('search_show');
-// 		form.reset();
-// 	} else {
-// 		search.classList.add('search_show');
-// 	}
-// };
 
 export const searchToggle = () => {
 	search.classList.toggle('search_show');
@@ -33,10 +24,7 @@ const form = createElement(
 	{
 		className: 'search__form',
 	},
-	{
-		parent: container,
-		cb: searchConroller,
-	},
+	{ parent: container, cb: searchController },
 );
 
 const inputSearch = createElement(
@@ -47,7 +35,9 @@ const inputSearch = createElement(
 		name: 'search',
 		placeholder: 'Найти...',
 	},
-	{ parent: form },
+	{
+		parent: form,
+	},
 );
 
 createElement(

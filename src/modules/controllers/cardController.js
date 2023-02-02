@@ -9,18 +9,15 @@ import { renderProducts } from '../render/renderProducts';
 
 export const cardController = async routerData => {
 	const { id } = routerData.data;
-	const data = await getData(`${API_URL}/api/goods/${id}`);
-	const { gender, category } = data;
 
+	const data = await getData(`${API_URL}/api/goods/${id} `);
+	const { gender, category } = data;
 	renderNavigation({ gender, category, render: true });
 	renderHero({ render: false });
 	renderCard({ data, render: true });
 	renderProducts({
-		title: 'Вам так же может понравиться',
-		params: {
-			count: 4,
-			gender: gender,
-		},
+		title: 'Вам также может понравиться',
+		params: { count: 4, gender },
 		render: true,
 	});
 	renderCart({ render: false });

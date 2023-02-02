@@ -1,9 +1,9 @@
 import { API_URL, cart } from '../const';
-import { addProductCart, calcTotalPrice, cartGoodsStore, getCart, removeCart } from '../controller/cartController';
+import { addProductCart, calcTotalPrice, cartGoodsStore, getCart, removeCart } from '../controllers/cartController';
 import { createElement } from '../utils/createElement';
 import { renderCount } from './renderCount';
 
-export const renderCart = ({ render, cartGoodsStore }) => {
+export const renderCart = ({ render }) => {
 	cart.textContent = '';
 
 	if (!render) {
@@ -26,7 +26,9 @@ export const renderCart = ({ render, cartGoodsStore }) => {
 		{
 			className: 'cart__list',
 		},
-		{ parent: container },
+		{
+			parent: container,
+		},
 	);
 
 	getCart().forEach(product => {

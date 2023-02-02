@@ -40,6 +40,7 @@ export const handlerFavorite = e => {
 		return;
 	}
 };
+
 products.addEventListener('click', handlerFavorite);
 
 export const favoriteController = () => {

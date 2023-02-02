@@ -20,9 +20,7 @@ const titleElem = createElement(
 	{
 		className: 'hero__title',
 	},
-	{
-		parent: content,
-	},
+	{ parent: content },
 );
 
 const heroLink = createElement(
@@ -31,9 +29,7 @@ const heroLink = createElement(
 		className: 'hero__link',
 		textContent: 'Перейти',
 	},
-	{
-		parent: content,
-	},
+	{ parent: content },
 );
 
 export const renderHero = ({ gender, render }) => {
@@ -41,7 +37,9 @@ export const renderHero = ({ gender, render }) => {
 		hero.style.display = 'none';
 		return;
 	}
+
 	hero.style.display = '';
+
 	hero.className = `hero hero__${gender}`;
 
 	hero.append(container);

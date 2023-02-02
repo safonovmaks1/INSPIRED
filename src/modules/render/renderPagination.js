@@ -28,7 +28,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 			if (isEnd) {
 				n = pages - count + i + 1;
 			} else {
-				n = pages - Math.floor(count / 2) + i;
+				n = page - Math.floor(count / 2) + i;
 			}
 		}
 
@@ -43,7 +43,7 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 					textContent: n,
 					href: getUrl({ page: n }),
 					className: `pagination__link
-					${page === n ? 'pagination__link_active' : ''}`,
+          ${page === n ? 'pagination__link_active' : ''}`,
 				}),
 			},
 		);
@@ -54,18 +54,17 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 			'a',
 			{
 				className: `pagination__arrow pagination__arrow_start
-					${!isNotStart ? 'pagination__arrow_disabled' : ''}`,
+          ${!isNotStart ? 'pagination__arrow_disabled' : ''}`,
 				href: getUrl({ page: 1 }),
 				tabIndex: !isNotStart ? '-1' : '0',
 				innerHTML: `
-					<svg class="pagination__icon" width="5" height="8" viewBox="0 0 5 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-						<path d="M5 7.06L1.90958 4L5 0.94L4.04858 0L-1.19209e-07 4L4.04858 8L5 7.06Z" />
-					</svg>
-					`,
-				ariaLabel: 'In start',
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 15.06L10.9096 12L14 8.94L13.0486 8L9 12L13.0486 16L14 15.06Z" fill="currentColor"/>
+          </svg>
+        `,
+				ariaLabel: 'В начало',
 			},
 			{
-				parent: wrapperPagination,
 				cb(link) {
 					wrapperPagination.prepend(link);
 				},
@@ -75,19 +74,17 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 				'a',
 				{
 					className: `pagination__arrow pagination__arrow_end
-						${isEnd ? 'pagination__arrow_disabled' : ''}`,
+          ${isEnd ? 'pagination__arrow_disabled' : ''}`,
 					href: getUrl({ page: pages }),
 					tabIndex: isEnd ? '-1' : '0',
 					innerHTML: `
-						<svg class="pagination__icon"  width="5" height="8" viewBox="0 0 5 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 7.06L3.09042 4L0 0.94L0.951417 0L5 4L0.951417 8L0 7.06Z" />
-						</svg>
-					`,
-					ariaLabel: 'In end',
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 15.06L13.0904 12L10 8.94L10.9514 8L15 12L10.9514 16L10 15.06Z" fill="currentColor"/>
+          </svg>
+        `,
+					ariaLabel: 'В конец',
 				},
-				{
-					parent: wrapperPagination,
-				},
+				{ parent: wrapperPagination },
 			);
 	}
 };
